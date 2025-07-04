@@ -9,7 +9,9 @@ Para este proyecto se propone responder la primera pregunta en base a técnicas 
 
 Plan de acción:
 
-
+El proyecto utilizara como base el dataset de kaggle llamado “Video Game Sales and Ratings” (Link = https://www.kaggle.com/datasets/kendallgillies/video-game-sales-and-ratings) el cual posee muchos datos sobre videojuegos (algunos más conocidos que otros) como cuantas unidades se vendieron, el género al que pertenecen, la critica profesional y la de usuarios, las clasificaciones por edades, entre otras.
+El objetivo será estimar la nota de los críticos utilizando las demás variables disponibles (en especial la variable de nota del usuario User_Score) El enfoque que queremos darle al proyecto es aplicar regresiones lineales para entender como afecta cada variable y a su vez como podemos relacionar de manera global variables distintas entre si utilizando árboles de decisión.
+Los modelos que utilizaremos serán evaluados con métricas vistas en la unidad 1, tales como MSE, R^2, etc.
 
 Justificación de los modelos:
 
