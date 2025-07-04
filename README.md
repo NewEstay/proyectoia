@@ -1,8 +1,7 @@
 # Proyecto de Introducción a la Inteligencia Artificial
 
 Integrantes:
-Diego Pérez = Ghost-Cougar17
-Diego Estay = NewEstay
+Diego Pérez = Ghost-Cougar17 // Diego Estay = NewEstay
 
 Entregable 1:
 
