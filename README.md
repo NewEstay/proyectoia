@@ -30,6 +30,7 @@ Contamos con una base de 15 variables y más de 16000 instancias, dichas variabl
 - User_Score: Nota promedio de los usuarios suscritos en Metacritic
 - User_Count: Cantidad de usuarios que evaluaron el juego
 - Rating: Clasificación de edades (todo público, adolescente, adulto, etc).
+
 En esta oportunidad nuestra variable de estudio será Critic_Score dado que lo que buscamos es predecir a que llama la crítica “un buen juego” y para esto utilizamos variables predictoras tanto numéricas como categóricas.
 ### Modelos que utilizaremos:
 - Regresiones lineales las cuales nos permitirán analizar como cada una de las variables afectan al Critic_Score y si ese efecto es positivo o negativo, aunque también puede no tener efecto significativo y por lo tanto descartable.
