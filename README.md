@@ -1,4 +1,4 @@
-# Análisis de factores que influyen en la calificación que la critica le da a un videojuego.
+# Análisis de factores que influyen en la calificación que la crítica profesional le da a un videojuego.
 
 Integrantes:
 - Ghost-Cougar17: Diego Pérez
