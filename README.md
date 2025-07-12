@@ -98,7 +98,7 @@ Los hiperparametros que ajustamos fueron:
 - `min_samples_split`: Número mínimo de muestras que necesita para dividir un nodo.
 - `min_samples_leaf`: Número mínimo de muestras que debe tener una hoja terminal del árbol.
 
-Consideramos distintas combinaciones de estos parámetros y evaluamos cada configuración utilizando ** validación cruzada con 5 folds** con la cual estimamos el rendimiento de cada combinación y así seleccionar automáticamente la que nos maximice el coeficiente **$R^2$**.
+Consideramos distintas combinaciones de estos parámetros y evaluamos cada configuración utilizando **validación cruzada con 5 folds** con la cual estimamos el rendimiento de cada combinación y así seleccionar automáticamente la que nos maximice el coeficiente **$R^2$**.
 
 Al encontrar el mejor conjunto de hiperparámetros, entrenamos nuevamente el modelo sobre los datos de entrenamiento en base a la configuración óptima y evaluamos el conjunto de test con la esperanza de que lográramos mejorar la capacidad de generalización del modelo y reducir sobreajustes, siendo esto uno de los problemas en los arboles de decisiones con configuración simple.
 
@@ -114,3 +114,9 @@ Encontramos que los hiperparametros óptimos son:
 - `min_samples_leaf = 1`
 
 Estos resultados muestran que configurar la complejidad del árbol de decisión mediante hiperparámetros que sean clave **mejora la precisión y estabilidad**, esto nos puede convertir un modelo simple en uno más competitivo y que sea menos propenso a ser sobreajustado.
+
+## Conclusión
+
+El objetivo de este proyecto fue identificar cuales son los factores que influyen en la calificación que la critica experta le asigna a un juego. A partir del análisis exploratorio y modelos predictivos llegamos a la conclusión de variables como `User_Score`, `Platform`, `Genre` y `Publisher` tienen un impacto considerable sobre la nota entregada por la crítica. Especialmente el puntaje que entrega el usuario mostro una correlación directa con las calificaciones de los profesionales en la materia lo que nos podría indicar que ambas perspectivas se alinean de manera parcial. El árbol de decisión nos permitió visualizar de manera jerárquica los pesos de casa una de las variables, esto lo complementamos con lo visto en la regresión lineal donde utilizamos métricas de rendimiento como el $R^2$ y el $MSE$, de esto modo logramos valores aceptables para un primer modelo que tiene una índole más interpretativa que predictora.
+
+Logramos comprobar que la evaluación que la crítica le asigna a un videojuego no es aleatoria, sino que responde a una variedad de factores que pueden analizarse de manera estructural. Este tipo de análisis puede ser útil para las propias desarrolladoras y/o distribuidoras que buscan mejorar sus productos desde etapas tempranas de desarrollo, la información que pueden obtener les podría servir para entender que elementos son mejor valorados por la crítica especializada.
