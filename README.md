@@ -129,7 +129,7 @@ Utilizando los resultados anteriores nos realizamos algunas preguntas que nos pa
 
 La plataforma es DreamCast, la cual tiene la menor cantidad de lanzamientos.
 
-- ¿Cuál es la plataforma que más le gusta a lso usuarios?
+- ¿Cuál es la plataforma que más le gusta a los usuarios?
 
 Es DreamCast, posiblemente los pocos lanzamientos que tiene sean muy bien recibidos.
 
