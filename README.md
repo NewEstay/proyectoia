@@ -76,3 +76,41 @@ En cuanto al conjunto de testeo, nuestro modelo alcanzó un **$R^2$ de 0.541** l
 Por el lado del **MSE en el test fue de 90.21** lo que quiere decir que, el cuadrado de la diferencia entre las predicciones y los valores reales es de 90 unidades promedio aproximadamente. Tenemos que considerar que, si bien esto no nos permite interpretar de manera directa los errores en la misma escala que la variable original, si nos permite darnos la idea del grado de dispersión que poseen las predicciones.
 
 Considerando todo lo anterior, estos resultados nos muestran que el modelo tiene una razonable capacidad explicativa, aunque no es perfecta, esto se debe a que la variable objetivo esta influenciada por la percepción humana y factores no cuantificables, pero creemos que este desempeño es bastante coherente con lo esperado en un modelo lineal.
+
+### Modelo de Árbol de Decisión
+
+Ahora entrenamos un modelo de árbol de decisión para predecir puntuaciones de los críticos (`Critic_Score`). Nos aseguramos de tener consistencia metodológica reutilizando el mismo pipeline de preprocesamiento que empleamos en la regresión lineal, el cual ya incluye la estandarización de las variables númericas y la codificación por one-hot de las variables categóricas. De este modo podemos aplicas las mismas transformaciones a los datos antes de entrenar el nuevo modelo.
+
+Utilizamos `DecisionTreeRegressor` de $scikit.learn$ como modelo base en donde configuramos una semilla fija (`random_state=42`) lo cual nos garantiza la reproducibilidad de los resultados. Posteriormente entrenamos el modelo en base al conjunto de entrenamiento y realizamos las predicciones en base al conjunto de test.
+
+Al igual que en regresión lineal, medimos el rendimiento de este modelo en base a **$R^2$** y el **$MSE$** sobre los datos de prueba. A esto le aplicamos la **validación cruzada con 5 folds** sobre el conjunto de entrenamiento para obtener una estimación robusta sobre la capacidad predictora del modelo.
+
+La estructura nos ayuda a comparar directamente el desempeño propio del árbol de decisión con la regresión lineal, esto es debido a que ambos modelos realizan sus operaciones sobre los mismos datos y bajo las mismas condiciones.
+
+En este caso, el modelo de árbol de decisión consiguió un **$R^2$ de validación cruzada de 0.223**, en otras palabras, nuestro modelo es capaz de explicar apenas casi el 23% de la variación en las puntuaciones de los profesionales dentro del conjunto de datos. Podemos notar que esta cifra es considerablemente inferior al desempeño obtenido por la regresión lineal lo que nos indica una limitancia en la capacidad de predicción para este modelo.
+
+Por el lado del conjunto de prueba el **$R^2$ fue 0.214** lo que indica que apenas podemos capturar cerca del 21% de la variación real en las calificaciones de los críticos. Teniendo esto en mente podemos concluir que en estado actual en que el árbol de decisión fue configurado **no logramos modelar de forma adecuada la complejidad del fenómeno**. A esto debemos sumarle el dato de que el **$MSE$ fue de 154.65** lo cual es significativamente superior al 90.21 obtenido por la regresión lineal, lo que confirma una mayor dispersión de los errores en la predicción.
+
+Decidimos intentar mejorar de alguna manera este modelo, para esto aplicamos un **ajuste de hiperparametros utilizando `GridSearchCV`** la cual es una técnica para buscar exhaustivamente la mejor combinación posible de parámetros para el modelo en base a validación cruzada.
+
+Los hiperparametros que ajustamos fueron:
+- `max_depth`: Profundidad máxima del árbol, controla cuanto puede crecer y cuán especifico puede volverse.
+- `min_samples_split`: Número mínimo de muestras que necesita para dividir un nodo.
+- `min_samples_leaf`: Número mínimo de muestras que debe tener una hoja terminal del árbol.
+
+Consideramos distintas combinaciones de estos parámetros y evaluamos cada configuración utilizando ** validación cruzada con 5 folds** con la cual estimamos el rendimiento de cada combinación y así seleccionar automáticamente la que nos maximice el coeficiente **$R^2$**.
+
+Al encontrar el mejor conjunto de hiperparámetros, entrenamos nuevamente el modelo sobre los datos de entrenamiento en base a la configuración óptima y evaluamos el conjunto de test con la esperanza de que lográramos mejorar la capacidad de generalización del modelo y reducir sobreajustes, siendo esto uno de los problemas en los arboles de decisiones con configuración simple.
+
+Una vez aplicada esta estrategia, nuestro árbol de decisión optimizado consiguió un **$R^2$ de validación cruzada de 0.492**, este resultado es bastante mejor que el modelo base el cual apenas alcanzaba el 22%. Este modelo captura de mejor manera la estructura de los datos de entrenamiento y generaliza la capacidad de predicción de forma más efectiva.
+
+Por el lado del conjunto de prueba, el modelo alcanzo un **$R^2$ de 0.456** lo que indica que en este estado el modelo puede explicar un 46% de la variabilidad en las puntuaciones reales de los profesionales. Si tenemos en cuenta lo obtenido por el modelo de regresión lineal es un poco inferior, pero sigue siendo significativamente superior al árbol de decisión sin regulación.
+
+Debemos agregarle a esto que el **$MSE$ se redujo a 106.98** lo cual mejora de forma considerable el error obtenido en el árbol simple (casi 155), sin embargo, sigue estando por encima del obtenido por la regresión lineal. Aunque nuestro modelo optimizado es un poco peor que nuestro primer modelo de regresión sigue siendo más eficiente en disminución de errores y predice de mejor manera que su contraparte simple.
+
+Encontramos que los hiperparametros óptimos son:
+- `max_depth = 5`
+- `min_samples_split = 5`
+- `min_samples_leaf = 1`
+
+Estos resultados muestran que configurar la complejidad del árbol de decisión mediante hiperparámetros que sean clave **mejora la precisión y estabilidad**, esto nos puede convertir un modelo simple en uno más competitivo y que sea menos propenso a ser sobreajustado.
