@@ -120,3 +120,27 @@ Estos resultados muestran que configurar la complejidad del árbol de decisión 
 El objetivo de este proyecto fue identificar cuales son los factores que influyen en la calificación que la critica experta le asigna a un juego. A partir del análisis exploratorio y modelos predictivos llegamos a la conclusión de variables como `User_Score`, `Platform`, `Genre` y `Publisher` tienen un impacto considerable sobre la nota entregada por la crítica. Especialmente el puntaje que entrega el usuario mostro una correlación directa con las calificaciones de los profesionales en la materia lo que nos podría indicar que ambas perspectivas se alinean de manera parcial. El árbol de decisión nos permitió visualizar de manera jerárquica los pesos de casa una de las variables, esto lo complementamos con lo visto en la regresión lineal donde utilizamos métricas de rendimiento como el $R^2$ y el $MSE$, de esto modo logramos valores aceptables para un primer modelo que tiene una índole más interpretativa que predictora.
 
 Logramos comprobar que la evaluación que la crítica le asigna a un videojuego no es aleatoria, sino que responde a una variedad de factores que pueden analizarse de manera estructural. Este tipo de análisis puede ser útil para las propias desarrolladoras y/o distribuidoras que buscan mejorar sus productos desde etapas tempranas de desarrollo, la información que pueden obtener les podría servir para entender que elementos son mejor valorados por la crítica especializada.
+
+## Extras
+
+Utilizando los resultados anteriores nos realizamos algunas preguntas que nos parecieron curiosas mientras realizabamos el proyecto:
+
+- ¿Cuál es la plataforma con peor cantidad de lanzamientos?
+
+La plataforma es DreamCast, la cual tiene la menor cantidad de lanzamientos.
+
+- ¿Cuál es la plataforma que más le gusta a lso usuarios?
+
+Es DreamCast, posiblemente los pocos lanzamientos que tiene sean muy bien recibidos.
+
+- ¿Qué plataforma es la más popular por cada región?
+
+En Norte América es Xbox 360, luego le sigue Play Station 3 en Europa, Nintendo DS en Japón y en el resto del mundo es la Play Statión 2.
+
+- ¿Qué plataforma genera más ganancias globales?
+
+La Play Station 2.
+
+- ¿Cuál es la plataforma con mejores calificaciones por parte de la crítica?
+
+Es DreamCast, nuevamente se deba a que posiblemente los pocos lanzamientos que tiene sean muy bien recordados.
